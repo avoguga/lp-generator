@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais moderna */
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -9,39 +9,116 @@ body {
 }
 
 #landingPageForm {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px; /* Limitar largura máxima */
+    margin: 40px 0;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     background-color: white;
 }
 
-#landingPageForm input[type="text"],
-#landingPageForm input[type="color"] {
-    margin-bottom: 10px;
+#landingPageForm label {
+    display: block; /* Melhorar a disposição dos rótulos */
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
 }
+
+#landingPageForm input[type="text"],
+#landingPageForm input[type="color"],
+#landingPageForm input[type="number"],
+#landingPageForm select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px; /* Aumentar o espaçamento */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Melhorar o gerenciamento de largura */
+}
+
+#landingPageForm input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 100%;
+    height: 34px;
+    padding: 0px;
+    background: transparent;
+}
+
+#landingPageForm input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+#landingPageForm input[type="color"]::-webkit-color-swatch {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+#landingPageForm input[type="color"]::-moz-color-swatch {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+#landingPageForm input[type="color"]::-ms-color-swatch {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
 
 #preview {
-    width: 80%;
+    width: 90%;
+    max-width: 800px; /* Ajustar largura */
     margin: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
 }
 
-#exportBtn {
-    padding: 10px 20px;
+/* Estilo comum para todos os botões */
+.button {
+    padding: 10px 25px;
     font-size: 16px;
     color: white;
-    background-color: #007bff;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+    transform: scale(1.05); /* Efeito de ampliação no hover */
+}
+
+/* Estilo específico para o botão Exportar HTML */
+#exportBtn {
+    background-color: #28a745; /* Mantendo a cor original */
 }
 
 #exportBtn:hover {
+    background-color: #218838; /* Cor mais escura no hover */
+}
+
+/* Estilo específico para o botão Gerar Landing Page */
+#generateBtn {
+    background-color: #007bff; /* Uma cor diferente para distinção */
+}
+
+#generateBtn:hover {
     background-color: #0056b3;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    #landingPageForm,
+    #preview {
+        width: 95%;
+        margin: 20px;
+    }
 }

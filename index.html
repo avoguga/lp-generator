@@ -1,32 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gerador de Landing Page</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <form id="landingPageForm">
-        <label for="title">Título da Página:</label><br>
-        <input type="text" id="title" name="title" /><br>
+      <label for="title">Título da Página:</label><br />
+      <input type="text" id="title" name="title" /><br />
 
-        <label for="headerColor">Cor do Cabeçalho:</label><br>
-        <input type="color" id="headerColor" name="headerColor" /><br>
+      <label for="headerColor">Cor do Cabeçalho:</label><br />
+      <input type="color" id="headerColor" name="headerColor" /><br />
 
-        <label for="bodyColor">Cor do Corpo:</label><br>
-        <input type="color" id="bodyColor" name="bodyColor" /><br>
+      <label for="bodyColor">Cor do Corpo:</label><br />
+      <input type="color" id="bodyColor" name="bodyColor" /><br />
 
-        <label for="footerColor">Cor do Rodapé:</label><br>
-        <input type="color" id="footerColor" name="footerColor" /><br>
+      <label for="footerColor">Cor do Rodapé:</label><br />
+      <input type="color" id="footerColor" name="footerColor" /><br />
 
-        <input type="submit" value="Gerar Landing Page" />
+      <label for="fontChoice">Tipografia:</label><br />
+      <select id="fontChoice" name="fontChoice">
+        <option value="Arial">Arial</option>
+        <option value="Verdana">Verdana</option>
+        <option value="Helvetica">Helvetica</option>
+        <!-- Adicione mais opções de fontes conforme necessário --></select
+      ><br /><br />
+
+      <label for="ctaText">Texto do CTA:</label><br />
+      <input type="text" id="ctaText" name="ctaText" /><br /><br />
+
+      <label for="sectionCount">Número de Seções:</label><br />
+      <input
+        type="number"
+        id="sectionCount"
+        name="sectionCount"
+        min="1"
+      /><br /><br />
+
+      <div id="sectionsInput"></div>
+
+      <input
+        type="submit"
+        value="Gerar Landing Page"
+        id="generateBtn"
+        class="button"
+      />
     </form>
 
     <div id="preview"></div>
 
-    <button id="exportBtn">Exportar HTML</button>
+    <button id="exportBtn" class="button">Exportar HTML</button>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
