@@ -28,24 +28,31 @@ function getFormValues() {
 }
 
 function generateSectionHtml(sectionNumber) {
-  const sectionText = document.getElementById(`sectionText${sectionNumber}`).value;
-  const sectionImageCheckbox = document.getElementById(`sectionImage${sectionNumber}`);
+  const sectionText = document.getElementById(
+    `sectionText${sectionNumber}`
+  ).value;
+  const sectionImageCheckbox = document.getElementById(
+    `sectionImage${sectionNumber}`
+  );
   let sectionImageContent = "";
 
   if (sectionImageCheckbox && sectionImageCheckbox.checked) {
-    const imageUrlInput = document.getElementById(`sectionImageUrl${sectionNumber}`);
-    const imageDataURL = imageUrlInput.getAttribute('data-url'); // Usar o Data URL armazenado
+    const imageUrlInput = document.getElementById(
+      `sectionImageUrl${sectionNumber}`
+    );
+    const imageDataURL = imageUrlInput.getAttribute("data-url"); // Usar o Data URL armazenado
     if (imageDataURL) {
       sectionImageContent = `<img src="${imageDataURL}" class="sectionImage" />`;
     }
   }
-  
-  return `<section id="section${sectionNumber}" class="contentSection">` +
-         `<p class="sectionText">${sectionText}</p>` +
-         sectionImageContent +
-         `</section>`;
-}
 
+  return (
+    `<section id="section${sectionNumber}" class="contentSection">` +
+    `<p class="sectionText">${sectionText}</p>` +
+    sectionImageContent +
+    `</section>`
+  );
+}
 
 function generateLandingPage() {
   const {
@@ -74,7 +81,7 @@ function generateLandingPage() {
 
 function updateSectionsInput(sectionCount) {
   let sectionsInputDiv = document.getElementById("sectionsInput");
-  sectionsInputDiv.innerHTML = ""; 
+  sectionsInputDiv.innerHTML = "";
 
   for (let i = 1; i <= sectionCount; i++) {
     sectionsInputDiv.innerHTML +=
@@ -92,12 +99,12 @@ function toggleImageInput(sectionNumber) {
 
   if (checkbox.checked) {
     fileInput.style.display = "block";
-    fileInput.onchange = function() {
+    fileInput.onchange = function () {
       if (this.files && this.files[0]) {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
           // Armazenar o Data URL no atributo data-url do input para uso posterior
-          fileInput.setAttribute('data-url', e.target.result);
+          fileInput.setAttribute("data-url", e.target.result);
         };
         reader.readAsDataURL(this.files[0]);
       }
@@ -106,7 +113,6 @@ function toggleImageInput(sectionNumber) {
     fileInput.style.display = "none";
   }
 }
-
 
 function exportLandingPage() {
   const { title, fontChoice } = getFormValues();
@@ -118,7 +124,16 @@ function exportLandingPage() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title}</title>
-    <style>body { font-family: ${fontChoice}; }</style>
+    <style>
+    /* Reset básico de CSS */
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: ${fontChoice};
+    }
+    /* Adicione outros estilos globais ou resets aqui */
+    </style>
 </head>
 <body>${pageContent}</body>
 </html>`;
