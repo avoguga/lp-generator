@@ -28,27 +28,24 @@ function getFormValues() {
 }
 
 function generateSectionHtml(sectionNumber) {
-  const sectionText = document.getElementById(
-    "sectionText" + sectionNumber
-  ).value;
-  const sectionImageCheckbox = document.getElementById(
-    "sectionImage" + sectionNumber
-  );
-  const sectionImageContent =
-    sectionImageCheckbox && sectionImageCheckbox.checked
-      ? '<img src="your-image-url.jpg" class="sectionImage" />'
-      : "";
-  return (
-    '<section id="section' +
-    sectionNumber +
-    '" class="contentSection">' +
-    '<p class="sectionText">' +
-    sectionText +
-    "</p>" +
-    sectionImageContent +
-    "</section>"
-  );
+  const sectionText = document.getElementById(`sectionText${sectionNumber}`).value;
+  const sectionImageCheckbox = document.getElementById(`sectionImage${sectionNumber}`);
+  let sectionImageContent = "";
+
+  if (sectionImageCheckbox && sectionImageCheckbox.checked) {
+    const imageUrlInput = document.getElementById(`sectionImageUrl${sectionNumber}`);
+    const imageDataURL = imageUrlInput.getAttribute('data-url'); // Usar o Data URL armazenado
+    if (imageDataURL) {
+      sectionImageContent = `<img src="${imageDataURL}" class="sectionImage" />`;
+    }
+  }
+  
+  return `<section id="section${sectionNumber}" class="contentSection">` +
+         `<p class="sectionText">${sectionText}</p>` +
+         sectionImageContent +
+         `</section>`;
 }
+
 
 function generateLandingPage() {
   const {
@@ -77,16 +74,39 @@ function generateLandingPage() {
 
 function updateSectionsInput(sectionCount) {
   let sectionsInputDiv = document.getElementById("sectionsInput");
-  sectionsInputDiv.innerHTML = ""; // Clear previous content
+  sectionsInputDiv.innerHTML = ""; 
 
   for (let i = 1; i <= sectionCount; i++) {
     sectionsInputDiv.innerHTML +=
       `<label for="sectionText${i}">Texto da Seção ${i}:</label><br>` +
       `<input type="text" id="sectionText${i}" name="sectionText${i}" class="sectionTextInput"/><br>` +
       `<label for="sectionImage${i}">Incluir Imagem na Seção ${i}?</label>` +
-      `<input type="checkbox" id="sectionImage${i}" name="sectionImage${i}" class="sectionImageCheckbox"/><br><br>`;
+      `<input type="checkbox" id="sectionImage${i}" name="sectionImage${i}" class="sectionImageCheckbox" onchange="toggleImageInput(${i})"/><br>` +
+      `<input type="file" id="sectionImageUrl${i}" name="sectionImageUrl${i}" class="sectionImageUrlInput" style="display:none;"/><br><br>`;
   }
 }
+
+function toggleImageInput(sectionNumber) {
+  const checkbox = document.getElementById(`sectionImage${sectionNumber}`);
+  const fileInput = document.getElementById(`sectionImageUrl${sectionNumber}`);
+
+  if (checkbox.checked) {
+    fileInput.style.display = "block";
+    fileInput.onchange = function() {
+      if (this.files && this.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          // Armazenar o Data URL no atributo data-url do input para uso posterior
+          fileInput.setAttribute('data-url', e.target.result);
+        };
+        reader.readAsDataURL(this.files[0]);
+      }
+    };
+  } else {
+    fileInput.style.display = "none";
+  }
+}
+
 
 function exportLandingPage() {
   const { title, fontChoice } = getFormValues();
