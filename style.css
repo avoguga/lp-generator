@@ -98,16 +98,16 @@ body {
 
 /* Estilo específico para o botão Exportar HTML */
 #exportBtn {
-    background-color: #28a745; /* Mantendo a cor original */
+    background-color: #28a745; 
 }
 
 #exportBtn:hover {
-    background-color: #218838; /* Cor mais escura no hover */
+    background-color: #218838;
 }
 
 /* Estilo específico para o botão Gerar Landing Page */
 #generateBtn {
-    background-color: #007bff; /* Uma cor diferente para distinção */
+    background-color: #007bff; 
 }
 
 #generateBtn:hover {
@@ -125,32 +125,32 @@ body {
 
 
 .sectionImage {
-    max-width: 100%; /* Faz a imagem se adaptar à largura do container */
-    height: auto; /* Mantém a proporção da imagem */
-    border-radius: 8px; /* Bordas arredondadas para a imagem */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra leve para dar profundidade */
-    margin-top: 20px; /* Espaçamento acima da imagem */
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 20px; 
 }
 
 /* Ajuste do input file para melhor integração visual */
 .sectionImageUrlInput {
     font-size: 1rem;
     padding: 8px;
-    margin-top: 10px; /* Espaçamento acima do input */
+    margin-top: 10px; 
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Ajusta o box model para incluir padding e border na largura total */
-    cursor: pointer; /* Muda o cursor para indicar que é clicável */
-    line-height: 1.5; /* Ajusta o espaçamento da linha para melhor legibilidade */
+    box-sizing: border-box; 
+    cursor: pointer;
+    line-height: 1.5; 
     display: inline-block;
-    width: auto; /* Permite que o tamanho do input se ajuste ao conteúdo */
-    background-color: #f8f8f8; /* Fundo levemente cinza para diferenciar do fundo branco */
-    text-align: center; /* Centraliza o texto no botão */
+    width: auto; 
+    background-color: #f8f8f8; 
+    text-align: center; 
 }
 
 /* Adicionando efeito visual ao focar ou passar o mouse sobre o input file */
 .sectionImageUrlInput:hover,
 .sectionImageUrlInput:focus {
-    border-color: #007bff; /* Cor de destaque ao passar o mouse ou focar */
-    outline: none; /* Remove o contorno padrão para foco */
+    border-color: #007bff;
+    outline: none;
 }
